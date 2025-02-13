@@ -1,0 +1,47 @@
+<div class="welcome-container">
+    <span class="welcome-message">Bonjour, {{ citizen.firstname }} ! 👋</span>
+    <p class="fr-badge fr-badge--new">Niveau :  {{ citizen.level }}</p>
+    <p class="fr-badge fr-badge--success">Points :  {{ citizen.note }}</p>
+    <button *ngIf="!isEditing" class="fr-btn" (click)="enableEditing()">Modifier</button>
+    <button *ngIf="isEditing" class="fr-btn" (click)="updateCitizen()">Enregistrer</button>
+    <button class="fr-btn" (click)="onLogout()">Se Déconnecter</button>
+</div>
+
+<div class="account-container">
+    <p class="text-title-for-container">Informations Personnelles</p>
+    <div class="form-row">
+        <div class="form-group">
+            <label class="fr-label" for="lastname">Nom</label>
+            <input class="fr-input" type="text" id="lastname" [(ngModel)]="citizen.lastname" [readonly]="!isEditing">
+        </div>
+        <div class="form-group">
+            <label class="fr-label" for="firstname">Prénom</label>
+            <input class="fr-input" type="text" id="firstname" [(ngModel)]="citizen.firstname" [readonly]="!isEditing">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label class="fr-label" for="email">Adresse e-mail</label>
+            <input class="fr-input" type="text" id="email" [(ngModel)]="citizen.mail" [readonly]="!isEditing">
+        </div>
+        <div class="form-group">
+            <label class="fr-label" for="phone">Téléphone</label>
+            <input class="fr-input" type="text" id="phone" [(ngModel)]="citizen.phone_number" [readonly]="!isEditing">
+        </div>
+    </div>
+    <p class="text-title-for-container">Informations Personnelles</p>
+    <div class="form-row">
+        <div class="form-group">
+            <label class="fr-label" for="email">Adresse</label>
+            <input class="fr-input" type="text" id="email" [(ngModel)]="citizen.address" [readonly]="!isEditing">
+        </div>
+        <div class="form-group">
+            <label class="fr-label" for="phone">Code Postal</label>
+            <input class="fr-input" type="text" id="phone" [(ngModel)]="citizen.zip_code" [readonly]="!isEditing">
+        </div>
+    </div>
+    <div style="text-align: center;"> <!-- Centre le bouton -->
+        <button class="fr-btn" (click)="downloadPDF()">Obtenir mon certificat</button>
+    </div>
+</div>
+<button class="fr-btn delete-account-btn" (click)="deleteAccount()">Supprimer le compte</button>

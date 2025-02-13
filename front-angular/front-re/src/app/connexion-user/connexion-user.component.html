@@ -1,0 +1,36 @@
+
+<div class="backoulou">
+  <div class="container">
+    <h2 class="Connexion-title">Mon Compte</h2>
+    <form *ngIf="!isLoggedIn; else logoutForm" (ngSubmit)="onLogin()">
+      <div>
+        <label class="fr-label" for="login"></label>
+        <input class="fr-input" type="text" id="login" [(ngModel)]="user.login" name="login" placeholder="Pseudo"required>
+      </div>
+      <div>
+        <label class="fr-label" for="password"></label>
+        <input class="fr-input" type="password" id="password" [(ngModel)]="user.password" name="password" placeholder="Mot de passe" required>
+      </div>
+      <button type="submit" class="btn">Se connecter</button>
+    </form>
+
+    <ng-template #logoutForm>
+      <button (click)="onLogout()">Se déconnecter</button>
+    </ng-template>
+
+    <h2 class="Ou-title">Ou</h2>
+
+    <div class="fr-connect-group">
+      <button class="fr-connect">
+        <span class="fr-connect__login">S’identifier avec</span>
+        <span class="fr-connect__brand">FranceConnect</span>
+      </button>
+      <p>
+        <a href="https://franceconnect.gouv.fr/" target="_blank"  rel="noopener" title="Qu’est-ce que FranceConnect ? - nouvelle fenêtre">Qu’est-ce que FranceConnect ?</a>
+      </p>
+    </div>
+
+
+    <button class="btn"  (click)="redirectToChoixPage()" >Inscription</button>
+  </div>
+</div>
